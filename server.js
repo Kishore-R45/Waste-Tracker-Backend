@@ -33,7 +33,7 @@ connectMongoDB();
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  origin: process.env.CORS_ORIGIN,
   credentials: true
 }));
 app.use(morgan('dev'));
@@ -42,6 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Rate limiting
+app.set('trust proxy', 1); // trust first proxy
 const limiter = rateLimit({
   windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS) || 15 * 60 * 1000,
   max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || 100

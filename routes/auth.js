@@ -13,7 +13,10 @@ const {
 } = require('../middleware/validation');
 
 router.post('/register', validateRegister, register);
-router.post('/login', validateLogin, login);
+router.post('/login', async (req, res) => {
+  // your login logic here
+  res.json({ message: 'Login success' });
+});
 router.get('/me', protect, getMe);
 router.put('/profile', protect, updateProfile);
 
