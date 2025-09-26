@@ -35,10 +35,10 @@ app.use(helmet());
 
 // Updated CORS configuration for multiple origins
 const allowedOrigins = [
+  process.env.CORS_ORIGIN,
   'http://localhost:3000',
   'http://localhost:5173',
-  process.env.CORS_ORIGIN,
-  'https://your-netlify-app.netlify.app', // Your Netlify URL
+  'https://waste-reduction-habit-tracker.netlify.app', // Your Netlify URL
   'https://your-vercel-app.vercel.app'    // Your Vercel frontend URL
 ].filter(Boolean);
 
