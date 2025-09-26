@@ -25,6 +25,10 @@ const errorHandler = require('./middleware/errorHandler');
 const { updateAllUserScores } = require('./utils/scoring');
 
 const app = express();
+app.get('/', (req, res) => {
+  res.json({ message: 'Waste Tracker API is running!' });
+});
+
 
 // Connect to Database
 connectMongoDB();
