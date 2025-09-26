@@ -13,10 +13,7 @@ const {
 } = require('../middleware/validation');
 
 router.post('/register', validateRegister, register);
-router.post('/login', async (req, res) => {
-  // your login logic here
-  res.json({ message: 'Login success' });
-});
+router.post('/login', validateLogin, login); // ← THIS WAS THE ISSUE! It was not calling the actual login controller
 router.get('/me', protect, getMe);
 router.put('/profile', protect, updateProfile);
 
